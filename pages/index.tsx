@@ -87,6 +87,7 @@ const getStaticProps = async () => {
   // console.log(`allWizeData: ${allWizeData}`);
   return {
     props: { allWizeData },
+    revalidate: 5,
   };
   // const allPostsData = getSortedPostsData();
   // return {
