@@ -2,7 +2,7 @@
 
 import { styled } from "@mui/material";
 
-const CardBreakPointTextSize = styled("div")(({ theme }) => ({
+const CardBreakPointTextSize = styled("span")(({ theme }) => ({
   [theme.breakpoints.down("md")]: {
     fontSize: "8vw",
   },
