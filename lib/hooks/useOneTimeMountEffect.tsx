@@ -8,7 +8,7 @@ const useOneTimeMountEffect = (functionOnMount: () => void) => {
       didLogRef.current = true;
       functionOnMount();
     }
-  }, []);
+  }, [functionOnMount]);
 };
 
 export { useOneTimeMountEffect };

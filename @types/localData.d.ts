@@ -1,3 +1,3 @@
-declare type WizeId = number;
-declare type WizeIdArray = WizeId[];
-declare type LocalSavedWizeIdArray = WizeIdArray | [];
+declare type WiseId = number;
+declare type WiseIdArray = WiseId[];
+declare type LocalStoredWiseIdArray = WiseIdArray | [];

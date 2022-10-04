@@ -1,5 +1,5 @@
-declare type WizeData = {
+declare type WiseData = {
   id: number;
   content: string;
 };
-declare type WizeDataArray = WizeData[];
+declare type WiseDataArray = WiseData[];
