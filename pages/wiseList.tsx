@@ -6,24 +6,32 @@ import type { NextPage, GetStaticProps } from "next";
 import { memo, useMemo } from "react";
 import { Box } from "@mui/material";
 import { getWise } from "../lib/wise";
+import BasicLayout from "../components/BasicLayout";
+import { WiseCard } from "../components/WiseCard";
 
 type Props = { allWiseData: WiseDataArray };
 
 const WiseList: NextPage<Props> = ({ allWiseData }) => {
   const view = useMemo(() => {
     return allWiseData.map((wiseData: WiseData) => {
-      const displayString = wiseData.content.replace(/\\n/g, "\n");
-      return (
-        <Box key={`WiseData-${wiseData.id}`} sx={{ display: "flex", justifyContent: "center" }}>
-          {displayString}
-        </Box>
-      );
+      return <WiseCard key={`WiseData-${wiseData.id}`} text={wiseData.content} />;
     });
   }, [allWiseData]);
   return (
-    <Box sx={{ fontSize: 50, whiteSpace: "pre-wrap", display: "flex", flexDirection: "column" }}>
-      {view}
-    </Box>
+    <BasicLayout>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          gap: "5vh",
+          marginBottom: "5vh",
+        }}
+      >
+        {view}
+      </Box>
+    </BasicLayout>
   );
 };
 
