@@ -5,7 +5,7 @@ import { PaletteMode } from "@mui/material";
 
 import { uiModeKey } from "../../../lib/Const";
 
-const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
+const ColorModeContext = React.createContext({ toggleColorMode: () => {}, mode: "light" });
 
 const ToggleColorMode = () => {
   const [mode, setMode] = useState<PaletteMode>("light");
@@ -17,8 +17,9 @@ const ToggleColorMode = () => {
         localStorage.setItem(uiModeKey, nextMode);
         setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
       },
+      mode,
     }),
-    []
+    [mode]
   );
   return { mode, setMode, colorMode };
 };

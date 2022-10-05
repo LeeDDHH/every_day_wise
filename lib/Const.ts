@@ -5,7 +5,20 @@ const wiseSourceUrl =
 const displayedWiseIdExpiredTimeKey = "displayedWiseIdExpiredTime";
 const displayedWiseIdKey = "displayedWiseId";
 const uiModeKey = "uiMode";
-const headerLinkNameList = ["Today", "List", "About"];
+const headerLinkNameList = [
+  {
+    name: "Today",
+    path: "/",
+  },
+  {
+    name: "List",
+    path: "/wiseList",
+  },
+  {
+    name: "About",
+    path: "/about",
+  },
+];
 
 export {
   wiseSourceUrl,

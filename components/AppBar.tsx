@@ -1,31 +1,41 @@
 "use strict";
 
 // TODO:画面のヘッダーを作る
+// TODO:アイコンで他のページヘのリンクを表示する
 
-import Link from "next/link";
-import { useContext } from "react";
-import {
-  AppBar as MUIAppBar,
-  Toolbar,
-  IconButton,
-  Menu,
-  Container,
-  Button,
-  MenuItem,
-  Icon,
-  Box,
-} from "@mui/material";
+import { useContext, useMemo, memo } from "react";
+import { Box } from "@mui/material";
 
 import { ColorModeContext } from "../lib/hooks/context/ColorModeContext";
 
-const AppBar = () => {
-  const colorMode = useContext(ColorModeContext);
+import { theme } from "../src/theme";
+
+import { IconWithMenu } from "./IconWithMenu";
+import { DarkLightMode } from "./DarkLightMode";
+
+const AppBar = memo(() => {
+  // NOTE:ColorModeContextで管理するmodeの変化によってbackgroundColorが変わるので呼び出す
+  useContext(ColorModeContext);
+
   return (
-    <Box sx={{ marginBottom: "5vh" }}>
-      ヘッダー
-      <Button onClick={colorMode.toggleColorMode}>モードチェンジ</Button>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "5vh",
+        marginBottom: "5vh",
+        backgroundColor: theme.palette.background.paper,
+        top: 0,
+        position: "sticky",
+      }}
+    >
+      <IconWithMenu />
+      <DarkLightMode />
     </Box>
   );
-};
+});
+
+AppBar.displayName = "AppBar";
 
 export { AppBar };
