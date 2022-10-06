@@ -38,6 +38,8 @@ const WiseCard = memo(({ text }: Props) => {
   );
 });
 
-WiseCard.displayName = "WiseCard";
+if (process.env.NODE_ENV === "development") {
+  WiseCard.displayName = "WiseCard";
+}
 
 export { WiseCard };

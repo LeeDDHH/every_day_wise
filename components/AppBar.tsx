@@ -1,8 +1,5 @@
 "use strict";
 
-// TODO:画面のヘッダーを作る
-// TODO:アイコンで他のページヘのリンクを表示する
-
 import { useContext, useMemo, memo } from "react";
 import { Box } from "@mui/material";
 
@@ -36,6 +33,8 @@ const AppBar = memo(() => {
   );
 });
 
-AppBar.displayName = "AppBar";
+if (process.env.NODE_ENV === "development") {
+  AppBar.displayName = "AppBar";
+}
 
 export { AppBar };

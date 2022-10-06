@@ -31,6 +31,8 @@ const DarkLightMode = memo(() => {
   );
 });
 
-DarkLightMode.displayName = "DarkLightMode";
+if (process.env.NODE_ENV === "development") {
+  DarkLightMode.displayName = "DarkLightMode";
+}
 
 export { DarkLightMode };

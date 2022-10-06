@@ -54,6 +54,8 @@ const IconWithMenu = memo(() => {
   );
 });
 
-IconWithMenu.displayName = "IconWithMenu";
+if (process.env.NODE_ENV === "development") {
+  IconWithMenu.displayName = "IconWithMenu";
+}
 
 export { IconWithMenu };

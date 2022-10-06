@@ -1,7 +1,5 @@
 "use strict";
 
-// TODO:ヘッダーとコンテンツを表示するためのレイアウトを作る
-
 import type { NextPage } from "next";
 // import Link from "next/link";
 import { Box } from "@mui/material";

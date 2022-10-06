@@ -1,7 +1,5 @@
 "use strict";
 
-// TODO:名言・格言を一覧で表示するためのページを作る
-
 import type { NextPage, GetStaticProps } from "next";
 import { memo, useMemo } from "react";
 import { Box } from "@mui/material";
@@ -43,6 +41,10 @@ const getStaticProps: GetStaticProps = async () => {
     revalidate: 5,
   };
 };
+
+if (process.env.NODE_ENV === "development") {
+  WiseList.displayName = "WiseList";
+}
 
 export default memo(WiseList);
 export { getStaticProps };
