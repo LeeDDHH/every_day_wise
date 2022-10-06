@@ -6,7 +6,6 @@ import { createTheme } from "@mui/material/styles";
 
 import { useMemo } from "react";
 
-// TODO:レスポンシブ対応用の設定をする
 // Create a theme instance.
 
 type Props = { mode: PaletteMode };
@@ -26,6 +25,23 @@ const MakeTheme = ({ mode }: Props) => {
             md: 768,
             lg: 1025,
             xl: 1536,
+          },
+        },
+        components: {
+          MuiCssBaseline: {
+            styleOverrides: {
+              a: {
+                ...(mode === "light"
+                  ? {
+                      color: "blue",
+                      "&:visited": { color: "#db9604" },
+                    }
+                  : {
+                      color: "orange",
+                      "&:visited": { color: "#34ff57" },
+                    }),
+              },
+            },
           },
         },
         typography: {
