@@ -45,7 +45,7 @@ const getStaticProps = async () => {
 
   return {
     props: { allWiseData },
-    revalidate: 5,
+    revalidate: 3600,
   };
 };
 
