@@ -1,6 +1,7 @@
 "use strict";
 
 import type { NextPage, GetStaticProps } from "next";
+import Link from "next/link";
 import { memo, useMemo } from "react";
 import { Box } from "@mui/material";
 import { getWise } from "../lib/wise";
@@ -12,7 +13,14 @@ type Props = { allWiseData: WiseDataArray };
 const WiseList: NextPage<Props> = ({ allWiseData }) => {
   const view = useMemo(() => {
     return allWiseData.map((wiseData: WiseData) => {
-      return <WiseCard key={`WiseData-${wiseData.id}`} text={wiseData.content} />;
+      const linkWithWiseCard = (
+        <Link href={`/wise/${wiseData.id}`} key={`WiseData-${wiseData.id}`}>
+          <Box sx={{ cursor: "pointer", "&:hover .MuiCard-root": { backgroundColor: "#737a99" } }}>
+            <WiseCard text={wiseData.content} />
+          </Box>
+        </Link>
+      );
+      return linkWithWiseCard;
     });
   }, [allWiseData]);
   return (

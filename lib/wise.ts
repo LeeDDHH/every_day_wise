@@ -129,6 +129,22 @@ const getWise = async (): Promise<WiseDataArray> => {
 };
 
 /**
+ * 指定したidをもとに名言、格言のデータを返す
+ *
+ * @param {string} id 名言、格言データのid
+ * @returns {WiseData | ""}
+ */
+const getOneWise = async (id: string): Promise<WiseData | ""> => {
+  const IntId = parseInt(id);
+  if (isNaN(IntId)) return "";
+  const allWise = await getWise();
+  const wiseIndex = allWise.findIndex((wise) => wise.id === IntId);
+  if (wiseIndex < 0) return "";
+  const result = allWise[wiseIndex];
+  return result;
+};
+
+/**
  * ローカルで使う名言・格言のデータを選定し、そのインデックスを更新する
  *
  * @param {UpdateLocalWiseJSONProps} object
@@ -175,4 +191,4 @@ const updateLocalWiseJSON = ({
   return setDisplayWiseIndex(randomId);
 };
 
-export { getWise, updateLocalWiseJSON };
+export { getWise, getOneWise, updateLocalWiseJSON };

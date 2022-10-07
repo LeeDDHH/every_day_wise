@@ -2,12 +2,13 @@
 
 import { memo, useMemo } from "react";
 import { Card, CardContent, Typography } from "@mui/material";
+import * as CSS from "csstype";
 
 import { CardBreakPointTextSize } from "../components/CardBreakPointTextSize";
 
-type Props = { text: string };
+type Props = { text: string; style?: CSS.Properties };
 
-const WiseCard = memo(({ text }: Props) => {
+const WiseCard = memo(({ text, style }: Props) => {
   const view = useMemo(() => {
     const displayString = text.replace(/\\n/g, "\n");
     return (
@@ -24,15 +25,15 @@ const WiseCard = memo(({ text }: Props) => {
       </CardContent>
     );
   }, [text]);
+
+  const cardStyle = {
+    width: "70vw",
+    padding: "5vw",
+    borderRadius: "15px",
+  };
+  const styles = { ...cardStyle, ...style };
   return (
-    <Card
-      variant="outlined"
-      sx={{
-        width: "70vw",
-        padding: "5vw",
-        borderRadius: "15px",
-      }}
-    >
+    <Card variant="outlined" sx={styles}>
       {view}
     </Card>
   );
