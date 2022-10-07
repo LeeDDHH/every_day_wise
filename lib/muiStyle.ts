@@ -1,18 +1,22 @@
-"use strcit";
+'use strcit';
 
 const allElementCenterStyle = {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
 };
 
 const noneUnderLineATagStyle = {
-  cursor: "pointer",
-  textDecoration: "none",
+  cursor: 'pointer',
+  textDecoration: 'none',
 };
 
 const childCardElementHoverStyle = {
-  "&:hover .MuiCard-root": { backgroundColor: "#737a99" },
+  '&:hover .MuiCard-root': { backgroundColor: '#737a99' },
 };
 
-export { allElementCenterStyle, noneUnderLineATagStyle, childCardElementHoverStyle };
+export {
+  allElementCenterStyle,
+  noneUnderLineATagStyle,
+  childCardElementHoverStyle,
+};

@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 const apiCallWithFetch = async <T>(url: string): Promise<T> => {
   const response = await fetch(url);

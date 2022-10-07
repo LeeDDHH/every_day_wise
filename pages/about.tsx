@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import type { NextPage } from "next";
-import { memo } from "react";
-import { Box } from "@mui/material";
+import type { NextPage } from 'next';
+import React, { memo } from 'react';
+import { Box } from '@mui/material';
 
-import BasicLayout from "../components/BasicLayout";
-import { AboutApp } from "../components/AboutApp";
+import BasicLayout from '../components/BasicLayout';
+import { AboutApp } from '../components/AboutApp';
 
-import { allElementCenterStyle } from "../lib/muiStyle";
+import { allElementCenterStyle } from '../lib/muiStyle';
 
 const About: NextPage = () => {
   return (
@@ -19,8 +19,8 @@ const About: NextPage = () => {
   );
 };
 
-if (process.env.NODE_ENV === "development") {
-  About.displayName = "About";
+if (process.env.NODE_ENV === 'development') {
+  About.displayName = 'About';
 }
 
 export default memo(About);

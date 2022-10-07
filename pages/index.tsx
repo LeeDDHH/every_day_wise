@@ -1,38 +1,45 @@
-"use strict";
+'use strict';
 
-import { memo, useState, useMemo } from "react";
-import type { NextPage } from "next";
-import { Box } from "@mui/material";
+import React, { memo, useState, useMemo } from 'react';
+import type { NextPage } from 'next';
+import { Box } from '@mui/material';
 
-import BasicLayout from "../components/BasicLayout";
-import { getWise, updateLocalWiseJSON } from "../lib/wise";
-import { useOneTimeMountEffect } from "../lib/hooks/useOneTimeMountEffect";
-import { WiseCard } from "../components/WiseCard";
-import { TwitterShareButton } from "../components/TwitterShareButton";
+import BasicLayout from '../components/BasicLayout';
+import { getWise, updateLocalWiseJSON } from '../lib/wise';
+import { useOneTimeMountEffect } from '../lib/hooks/useOneTimeMountEffect';
+import { WiseCard } from '../components/WiseCard';
+import { TwitterShareButton } from '../components/TwitterShareButton';
 
 type Props = { allWiseData: WiseDataArray };
 
 const Home: NextPage<Props> = ({ allWiseData }) => {
   const [displayWiseIndex, setDisplayWiseIndex] = useState<number>(-1);
 
-  useOneTimeMountEffect(() => updateLocalWiseJSON({ allWiseData, setDisplayWiseIndex }));
+  useOneTimeMountEffect(() =>
+    updateLocalWiseJSON({ allWiseData, setDisplayWiseIndex })
+  );
 
   const view = useMemo(() => {
-    if (displayWiseIndex < 0) return <Box>Can not display wise.</Box>;
-    return <WiseCard text={allWiseData[displayWiseIndex].content} />;
+    if (displayWiseIndex < 0) {
+      return <Box>Can not display wise.</Box>;
+    }
+    return <WiseCard text={allWiseData[displayWiseIndex]?.content ?? ''} />;
   }, [allWiseData, displayWiseIndex]);
 
-  const hostName = typeof window !== "undefined" ? window.location.hostname : "";
+  const hostName =
+    typeof window !== 'undefined' ? window.location.hostname : '';
 
   return (
     <BasicLayout>
-      <Box sx={{ display: "flex", justifyContent: "center" }}>{view}</Box>
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
+      <Box sx={{ display: 'flex', justifyContent: 'center' }}>{view}</Box>
+      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
         <TwitterShareButton
           text={
-            displayWiseIndex < 0 ? "" : allWiseData[displayWiseIndex].content.replace(/\\n/g, "\n")
+            displayWiseIndex < 0
+              ? ''
+              : allWiseData[displayWiseIndex]?.content.replace(/\\n/g, '\n')
           }
-          hashtags={["名言", "格言"]}
+          hashtags={['名言', '格言']}
           url={`https://${hostName}`}
         />
       </Box>
@@ -49,8 +56,8 @@ const getStaticProps = async () => {
   };
 };
 
-if (process.env.NODE_ENV === "development") {
-  Home.displayName = "Home";
+if (process.env.NODE_ENV === 'development') {
+  Home.displayName = 'Home';
 }
 
 export default memo(Home);

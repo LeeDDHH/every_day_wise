@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-import { PaletteMode, Theme } from "@mui/material";
-import { createTheme } from "@mui/material/styles";
+import { PaletteMode, Theme } from '@mui/material';
+import { createTheme } from '@mui/material/styles';
 // import { red } from "@mui/material/colors";
 
-import { useMemo } from "react";
+import { useMemo } from 'react';
 
 // Create a theme instance.
 
@@ -31,61 +31,41 @@ const MakeTheme = ({ mode }: Props) => {
           MuiCssBaseline: {
             styleOverrides: {
               a: {
-                textDecoration: "none",
-                ...(mode === "light"
-                  ? {
-                      color: "blue",
-                      "&:visited": { color: "#db9604" },
-                    }
-                  : {
-                      color: "orange",
-                      "&:visited": { color: "#34ff57" },
-                    }),
+                textDecoration: 'none',
+                ...(mode === 'light'
+                  ? { color: 'blue', '&:visited': { color: '#db9604' } }
+                  : { color: 'orange', '&:visited': { color: '#34ff57' } }),
               },
             },
           },
         },
         typography: {
           fontFamily: [
-            "-apple-system",
+            '-apple-system',
             '"M PLUS 1p"',
-            "BlinkMacSystemFont",
+            'BlinkMacSystemFont',
             '"Segoe UI"',
-            "Roboto",
+            'Roboto',
             '"Helvetica Neue"',
-            "Arial",
-            "sans-serif",
+            'Arial',
+            'sans-serif',
             '"Apple Color Emoji"',
             '"Segoe UI Emoji"',
             '"Segoe UI Symbol"',
-          ].join(","),
+          ].join(','),
         },
         // Palette
         // https://mui.com/material-ui/customization/palette/
         palette: {
-          mode: mode ?? "dark",
-          ...(mode === "light"
+          mode: mode ?? 'dark',
+          ...(mode === 'light'
             ? {
-                // palette values for light mode
-                background: {
-                  default: "#E1E6F0",
-                  paper: "#FFFFFF",
-                },
-                text: {
-                  primary: "#07080B",
-                  secondary: "#37445C",
-                },
+                background: { default: '#E1E6F0', paper: '#FFFFFF' },
+                text: { primary: '#07080B', secondary: '#37445C' },
               }
             : {
-                // palette values for dark mode
-                background: {
-                  default: "#1E212B",
-                  paper: "#393C4B",
-                },
-                text: {
-                  primary: "#FFFFFF",
-                  secondary: "#C5CADA",
-                },
+                background: { default: '#1E212B', paper: '#393C4B' },
+                text: { primary: '#FFFFFF', secondary: '#C5CADA' },
               }),
         },
       }),

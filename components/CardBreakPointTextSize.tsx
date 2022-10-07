@@ -1,16 +1,16 @@
-"use strict";
+'use strict';
 
-import { styled } from "@mui/material";
+import { styled } from '@mui/material';
 
-const CardBreakPointTextSize = styled("span")(({ theme }) => ({
-  [theme.breakpoints.down("md")]: {
-    fontSize: "6vw",
+const CardBreakPointTextSize = styled('span')(({ theme }) => ({
+  [theme.breakpoints.down('md')]: {
+    fontSize: '6vw',
   },
-  [theme.breakpoints.up("md")]: {
-    fontSize: "5vw",
+  [theme.breakpoints.up('md')]: {
+    fontSize: '5vw',
   },
-  [theme.breakpoints.up("xl")]: {
-    fontSize: "3vw",
+  [theme.breakpoints.up('xl')]: {
+    fontSize: '3vw',
   },
 }));
 

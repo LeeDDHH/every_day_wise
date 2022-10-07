@@ -1,12 +1,19 @@
-"use strict";
+'use strict';
 
-import Link from "next/link";
-import Image from "next/image";
-import { useState, memo } from "react";
-import { Tooltip, IconButton, Menu, MenuItem, Typography, Box } from "@mui/material";
+import Link from 'next/link';
+import Image from 'next/image';
+import React, { useState, memo } from 'react';
+import {
+  Tooltip,
+  IconButton,
+  Menu,
+  MenuItem,
+  Typography,
+  Box,
+} from '@mui/material';
 
-import { headerLinkNameList } from "../lib/Const";
-import LightBulb from "../public/light_bulb.svg";
+import { headerLinkNameList } from '../lib/Const';
+import LightBulb from '../public/light_bulb.svg';
 
 const IconWithMenu = memo(() => {
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
@@ -33,29 +40,28 @@ const IconWithMenu = memo(() => {
         </IconButton>
       </Tooltip>
       <Menu
-        sx={{ mt: "45px" }}
+        sx={{ mt: '45px' }}
         id="menu-appbar"
         anchorEl={anchorElUser}
         anchorOrigin={{
-          vertical: "top",
-          horizontal: "right",
+          vertical: 'top',
+          horizontal: 'right',
         }}
         keepMounted
         transformOrigin={{
-          vertical: "top",
-          horizontal: "right",
+          vertical: 'top',
+          horizontal: 'right',
         }}
         open={Boolean(anchorElUser)}
-        onClose={handleCloseUserMenu}
-      >
+        onClose={handleCloseUserMenu}>
         {menuItems}
       </Menu>
     </Box>
   );
 });
 
-if (process.env.NODE_ENV === "development") {
-  IconWithMenu.displayName = "IconWithMenu";
+if (process.env.NODE_ENV === 'development') {
+  IconWithMenu.displayName = 'IconWithMenu';
 }
 
 export { IconWithMenu };

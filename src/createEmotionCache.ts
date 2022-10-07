@@ -1,9 +1,9 @@
-"use strict";
+'use strict';
 
-import createCache, { EmotionCache } from "@emotion/cache";
+import createCache, { EmotionCache } from '@emotion/cache';
 
 const getInsertionPoint = (): HTMLMetaElement | undefined => {
-  if (typeof document !== "undefined") {
+  if (typeof document !== 'undefined') {
     const insertionPoint = document.querySelector<HTMLMetaElement>(
       'meta[name="emotion-insertion-point"]'
     );
@@ -11,10 +11,15 @@ const getInsertionPoint = (): HTMLMetaElement | undefined => {
       return insertionPoint;
     }
   }
+  return undefined;
 };
 
 const createEmotionCache = (): EmotionCache => {
-  return createCache({ key: "mui-style", prepend: true, insertionPoint: getInsertionPoint() });
+  return createCache({
+    key: 'mui-style',
+    prepend: true,
+    insertionPoint: getInsertionPoint(),
+  });
 };
 
 export default createEmotionCache;

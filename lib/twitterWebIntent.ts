@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 type TwitterIntentTweetProps = {
   text?: string;
@@ -17,14 +17,17 @@ const makeTwitterWebIntentUrl = ({
   related,
   in_reply_to,
 }: TwitterIntentTweetProps): string => {
-  const _url = new URL("https://twitter.com/intent/tweet");
+  const _url = new URL('https://twitter.com/intent/tweet');
 
-  if (text !== undefined) _url.searchParams.set("text", text);
-  if (url !== undefined) _url.searchParams.set("url", url);
-  if (hashtags !== undefined) _url.searchParams.set("hashtags", hashtags.join(","));
-  if (via !== undefined) _url.searchParams.set("via", via);
-  if (related !== undefined) _url.searchParams.set("related", related.join(","));
-  if (in_reply_to !== undefined) _url.searchParams.set("in_reply_to", in_reply_to);
+  if (text !== undefined) _url.searchParams.set('text', text);
+  if (url !== undefined) _url.searchParams.set('url', url);
+  if (hashtags !== undefined)
+    _url.searchParams.set('hashtags', hashtags.join(','));
+  if (via !== undefined) _url.searchParams.set('via', via);
+  if (related !== undefined)
+    _url.searchParams.set('related', related.join(','));
+  if (in_reply_to !== undefined)
+    _url.searchParams.set('in_reply_to', in_reply_to);
 
   return _url.toString();
 };

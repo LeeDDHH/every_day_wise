@@ -1,8 +1,12 @@
-"use strict";
+'use strict';
 
-import { apiCallWithFetch } from "./util";
-import { wiseSourceUrl, displayedWiseIdExpiredTimeKey, displayedWiseIdKey } from "./Const";
-import { getTimeNow, getTomorrowTime } from "./time";
+import { apiCallWithFetch } from './util';
+import {
+  wiseSourceUrl,
+  displayedWiseIdExpiredTimeKey,
+  displayedWiseIdKey,
+} from './Const';
+import { getTimeNow, getTomorrowTime } from './time';
 
 type UpdateLocalWiseJSONProps = {
   allWiseData: WiseDataArray;
@@ -41,7 +45,10 @@ const _pushRandomIdIntoEmptyWiseJSON = ({
   // ローカルの名言・格言インデックス配列にランダムのインデックスを追加する
   newLocalStoredWiseJSON.push(randomId);
   // ローカルストレージに新しい名言・格言インデックス配列を保存する
-  localStorage.setItem(displayedWiseIdKey, JSON.stringify(newLocalStoredWiseJSON));
+  localStorage.setItem(
+    displayedWiseIdKey,
+    JSON.stringify(newLocalStoredWiseJSON)
+  );
   return randomId;
 };
 
@@ -51,8 +58,9 @@ const _pushRandomIdIntoEmptyWiseJSON = ({
  * @param localStoredWiseJSON ローカルの名言・格言インデックス配列
  * @returns {number} ローカルの名言・格言インデックス配列のインデックス
  */
-const _getLastWiseIndexInLocalStored = (localStoredWiseJSON: WiseIdArray): number =>
-  localStoredWiseJSON[localStoredWiseJSON.length - 1];
+const _getLastWiseIndexInLocalStored = (
+  localStoredWiseJSON: WiseIdArray
+): number => localStoredWiseJSON[localStoredWiseJSON.length - 1] ?? -1;
 
 /**
  * ローカルの名言・格言インデックス配列の文字列データを配列に変換する
@@ -66,14 +74,17 @@ const _localStorageStringDataToArray = ({
   localStorageStringData,
   allWiseData,
 }: _LocalStorageStringDataToArray): number[] => {
-  let localStorageArrayData: number[] = JSON.parse(localStorageStringData);
+  const localStorageArrayData: number[] = JSON.parse(localStorageStringData);
 
   /**
    * 1. ローカルの名言・格言インデックス配列が空だった場合
    * 2. ローカルの名言・格言インデックス配列の長さと名言・格言のデータの長さが同じだった場合
    * 名言・格言のデータから新しいインデックスをランダムで取得してローカルストレージに保存する
    */
-  if (localStorageArrayData.length <= 0 || localStorageArrayData.length === allWiseData.length) {
+  if (
+    localStorageArrayData.length <= 0 ||
+    localStorageArrayData.length === allWiseData.length
+  ) {
     const randomId = _pushRandomIdIntoEmptyWiseJSON({
       allWiseData,
       newLocalStoredWiseJSON: [],
@@ -107,15 +118,19 @@ const _addNewIndexToLocalStoredWiseAndRetrieve = ({
     Math.random() * noExistIdArrayInLocalData.length
   );
   // 名言・格言のデータにのみ存在するユニークなID
-  const noExistIdInLocalData = noExistIdArrayInLocalData[noExistIdInLocalDataRandomIndex];
+  const noExistIdInLocalData =
+    noExistIdArrayInLocalData[noExistIdInLocalDataRandomIndex];
 
   const newLocalStoredWiseJSON = [...localData];
   // ローカルの名言・格言インデックス配列にランダムのインデックスを追加する
-  newLocalStoredWiseJSON.push(noExistIdInLocalData);
+  if (noExistIdInLocalData) newLocalStoredWiseJSON.push(noExistIdInLocalData);
   // ローカルストレージに新しい名言・格言インデックス配列を保存する
-  localStorage.setItem(displayedWiseIdKey, JSON.stringify(newLocalStoredWiseJSON));
+  localStorage.setItem(
+    displayedWiseIdKey,
+    JSON.stringify(newLocalStoredWiseJSON)
+  );
 
-  return noExistIdInLocalData;
+  return noExistIdInLocalData ?? -1;
 };
 
 /**
@@ -132,16 +147,16 @@ const getWise = async (): Promise<WiseDataArray> => {
  * 指定したidをもとに名言、格言のデータを返す
  *
  * @param {string} id 名言、格言データのid
- * @returns {WiseData | ""}
+ * @returns {WiseData | ''}
  */
-const getOneWise = async (id: string): Promise<WiseData | ""> => {
+const getOneWise = async (id: string): Promise<WiseData | ''> => {
   const IntId = parseInt(id);
-  if (isNaN(IntId)) return "";
+  if (isNaN(IntId)) return '';
   const allWise = await getWise();
   const wiseIndex = allWise.findIndex((wise) => wise.id === IntId);
-  if (wiseIndex < 0) return "";
+  if (wiseIndex < 0) return '';
   const result = allWise[wiseIndex];
-  return result;
+  return result ?? '';
 };
 
 /**
@@ -160,11 +175,16 @@ const updateLocalWiseJSON = ({
   const tomorrow = getTomorrowTime();
 
   // ローカルの名言・格言表示期限時間
-  const hasLocalExpiredTime = localStorage.getItem(displayedWiseIdExpiredTimeKey);
-  const expiredTime = !hasLocalExpiredTime ? tomorrow : parseInt(hasLocalExpiredTime);
+  const hasLocalExpiredTime = localStorage.getItem(
+    displayedWiseIdExpiredTimeKey
+  );
+  const expiredTime = !hasLocalExpiredTime
+    ? tomorrow
+    : parseInt(hasLocalExpiredTime);
 
   // ローカルの名言・格言インデックス配列の文字列
-  const localStorageStringData = localStorage.getItem(displayedWiseIdKey) ?? "[]";
+  const localStorageStringData =
+    localStorage.getItem(displayedWiseIdKey) ?? '[]';
   // ローカルの名言・格言インデックス配列
   const localStorageArrayData = _localStorageStringDataToArray({
     localStorageStringData,

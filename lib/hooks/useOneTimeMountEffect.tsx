@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from 'react';
 
 const useOneTimeMountEffect = (functionOnMount: () => void) => {
   const didLogRef = useRef(false);

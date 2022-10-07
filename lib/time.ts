@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 /**
  * 現在のUNIXタイムスタンプを取得する
@@ -13,7 +13,7 @@ const getTimeNow = (): number => Date.now();
  * @returns {number}
  */
 const getTomorrowTime = (): number => {
-  let tomorrow = new Date();
+  const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
   tomorrow.setHours(0, 0, 0);
   tomorrow.setMilliseconds(0);
