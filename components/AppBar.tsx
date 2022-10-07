@@ -10,6 +10,8 @@ import { theme } from "../src/theme";
 import { IconWithMenu } from "./IconWithMenu";
 import { DarkLightMode } from "./DarkLightMode";
 
+import { allElementCenterStyle } from "../lib/muiStyle";
+
 const AppBar = memo(() => {
   // NOTE:ColorModeContextで管理するmodeの変化によってbackgroundColorが変わるので呼び出す
   useContext(ColorModeContext);
@@ -17,9 +19,7 @@ const AppBar = memo(() => {
   return (
     <Box
       sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+        ...allElementCenterStyle,
         height: "5vh",
         marginBottom: "5vh",
         backgroundColor: theme.palette.background.paper,

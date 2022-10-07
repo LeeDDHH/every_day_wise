@@ -1,14 +1,14 @@
 "use strict";
 
-import { memo, useMemo } from "react";
+import { memo, useMemo, ForwardedRef } from "react";
 import { Card, CardContent, Typography } from "@mui/material";
 import * as CSS from "csstype";
 
 import { CardBreakPointTextSize } from "../components/CardBreakPointTextSize";
 
-type Props = { text: string; style?: CSS.Properties };
+type Props = { text: string; style?: CSS.Properties; ref?: ForwardedRef<HTMLDivElement> };
 
-const WiseCard = memo(({ text, style }: Props) => {
+const WiseCard = memo(({ text, style, ref }: Props) => {
   const view = useMemo(() => {
     const displayString = text.replace(/\\n/g, "\n");
     return (
@@ -33,7 +33,7 @@ const WiseCard = memo(({ text, style }: Props) => {
   };
   const styles = { ...cardStyle, ...style };
   return (
-    <Card variant="outlined" sx={styles}>
+    <Card variant="outlined" sx={styles} ref={ref}>
       {view}
     </Card>
   );

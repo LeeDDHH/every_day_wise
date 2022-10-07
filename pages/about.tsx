@@ -7,10 +7,12 @@ import { Box } from "@mui/material";
 import BasicLayout from "../components/BasicLayout";
 import { AboutApp } from "../components/AboutApp";
 
+import { allElementCenterStyle } from "../lib/muiStyle";
+
 const About: NextPage = () => {
   return (
     <BasicLayout>
-      <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+      <Box sx={allElementCenterStyle}>
         <AboutApp />
       </Box>
     </BasicLayout>

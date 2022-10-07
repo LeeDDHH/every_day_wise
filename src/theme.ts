@@ -31,6 +31,7 @@ const MakeTheme = ({ mode }: Props) => {
           MuiCssBaseline: {
             styleOverrides: {
               a: {
+                textDecoration: "none",
                 ...(mode === "light"
                   ? {
                       color: "blue",

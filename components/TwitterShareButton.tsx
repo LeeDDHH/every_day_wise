@@ -5,6 +5,8 @@ import { IconButton, Box, Typography } from "@mui/material";
 
 import { makeTwitterWebIntentUrl } from "../lib/twitterWebIntent";
 
+import { allElementCenterStyle } from "../lib/muiStyle";
+
 import TwitterWhite from "../public/twitter_white.svg";
 
 // https://developer.twitter.com/en/docs/twitter-for-websites/tweet-button/guides/web-intent
@@ -44,12 +46,10 @@ const TwitterShareButton = ({
           borderRadius: "5px",
         }}
       >
-        <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+        <Box sx={allElementCenterStyle}>
           <Image src={TwitterWhite} alt="twitter share button icon" width="20px" height="20px" />
         </Box>
-        <Box
-          sx={{ display: "flex", justifyContent: "center", alignItems: "center", color: "#FFFFFF" }}
-        >
+        <Box sx={{ ...allElementCenterStyle, color: "#FFFFFF" }}>
           <Typography display="inline-block">シェアする</Typography>
         </Box>
       </Box>

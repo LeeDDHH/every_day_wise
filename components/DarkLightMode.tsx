@@ -6,19 +6,15 @@ import { IconButton, Box } from "@mui/material";
 
 import { ColorModeContext } from "../lib/hooks/context/ColorModeContext";
 
+import { allElementCenterStyle } from "../lib/muiStyle";
+
 import Moon from "../public/moon.svg";
 import Sun from "../public/sun.svg";
 
 const DarkLightMode = memo(() => {
   const colorMode = useContext(ColorModeContext);
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    <Box sx={allElementCenterStyle}>
       <IconButton onClick={colorMode.toggleColorMode}>
         <Image
           width="30px"
