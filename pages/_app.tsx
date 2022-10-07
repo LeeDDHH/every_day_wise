@@ -39,7 +39,7 @@ const App = ({ Component, emotionCache = clientSideEmotionCache, pageProps }: My
     }
 
     setMode(prevMode);
-  }, []);
+  }, [setMode]);
 
   return (
     <ColorModeContext.Provider value={colorMode}>
