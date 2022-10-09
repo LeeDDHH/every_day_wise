@@ -18,7 +18,7 @@ interface Params extends ParsedUrlQuery {
 }
 
 const OneWise: FC<Props> = ({ id, content }: Props) => {
-  const hostName = process.env['SITE_URL'];
+  const hostName = process.env['NEXT_PUBLIC_SITE_URL'];
   const contentText = content.replace(/\\n/g, '\n');
   return (
     <>

@@ -26,7 +26,7 @@ const Home: NextPage<Props> = ({ allWiseData }) => {
     return <WiseCard text={allWiseData[displayWiseIndex]?.content ?? ''} />;
   }, [allWiseData, displayWiseIndex]);
 
-  const hostName = process.env['SITE_URL'];
+  const hostName = process.env['NEXT_PUBLIC_SITE_URL'];
 
   return (
     <BasicLayout>

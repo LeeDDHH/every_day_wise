@@ -15,7 +15,7 @@ type LinkMenuItemProps = Omit<
 >;
 
 const LinkWithWiseCard = forwardRef<HTMLDivElement, LinkMenuItemProps>(
-  (props) => {
+  (props, _ref) => {
     const { text, href } = props;
 
     return (
