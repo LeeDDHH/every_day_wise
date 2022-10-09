@@ -18,8 +18,7 @@ interface Params extends ParsedUrlQuery {
 }
 
 const OneWise: FC<Props> = ({ id, content }: Props) => {
-  const hostName =
-    typeof window !== 'undefined' ? window.location.hostname : '';
+  const hostName = process.env['SITE_URL'];
   const contentText = content.replace(/\\n/g, '\n');
   return (
     <>
@@ -32,7 +31,7 @@ const OneWise: FC<Props> = ({ id, content }: Props) => {
         <meta
           property="og:url"
           key="ogUrl"
-          content={`https://${hostName}/wise/${id}`}
+          content={`${hostName}/wise/${id}`}
         />
         <meta
           property="og:description"
@@ -42,7 +41,7 @@ const OneWise: FC<Props> = ({ id, content }: Props) => {
         <meta
           property="og:image"
           key="ogImage"
-          content={`https://${hostName}/ogp/${id}.png`}
+          content={`${hostName}/ogp/${id}.png`}
         />
         <meta
           name="twitter:card"
@@ -53,7 +52,7 @@ const OneWise: FC<Props> = ({ id, content }: Props) => {
         <meta
           name="twitter:image"
           key="twitterImage"
-          content={`https://${hostName}/ogp/${id}.png`}
+          content={`${hostName}/ogp/${id}.png`}
         />
       </Head>
       <BasicLayout>
@@ -64,7 +63,7 @@ const OneWise: FC<Props> = ({ id, content }: Props) => {
           <TwitterShareButton
             text={contentText}
             hashtags={['名言', '格言']}
-            url={`https://${hostName}/wise/${id}`}
+            url={`${hostName}/wise/${id}`}
           />
         </Box>
       </BasicLayout>

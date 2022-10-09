@@ -26,8 +26,7 @@ const Home: NextPage<Props> = ({ allWiseData }) => {
     return <WiseCard text={allWiseData[displayWiseIndex]?.content ?? ''} />;
   }, [allWiseData, displayWiseIndex]);
 
-  const hostName =
-    typeof window !== 'undefined' ? window.location.hostname : '';
+  const hostName = process.env['SITE_URL'];
 
   return (
     <BasicLayout>
@@ -40,7 +39,7 @@ const Home: NextPage<Props> = ({ allWiseData }) => {
               : allWiseData[displayWiseIndex]?.content.replace(/\\n/g, '\n')
           }
           hashtags={['名言', '格言']}
-          url={`https://${hostName}`}
+          url={hostName}
         />
       </Box>
     </BasicLayout>
