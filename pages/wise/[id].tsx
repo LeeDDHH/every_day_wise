@@ -28,7 +28,7 @@ const OneWise: FC<Props> = ({ id, content }: Props) => {
         <meta
           property="og:image"
           key="ogImage"
-          content={`${hostName}/ogp/${id}.png`}
+          content={`https://${hostName}/ogp/${id}.png`}
         />
         <meta
           property="twitter:title"
@@ -48,7 +48,7 @@ const OneWise: FC<Props> = ({ id, content }: Props) => {
         <meta
           name="twitter:image"
           key="twitterImage"
-          content={`${hostName}/ogp/${id}.png`}
+          content={`https://${hostName}/ogp/${id}.png`}
         />
       </Head>
       <BasicLayout>
