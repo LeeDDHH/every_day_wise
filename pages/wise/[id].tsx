@@ -20,13 +20,25 @@ interface Params extends ParsedUrlQuery {
 const OneWise: FC<Props> = ({ id, content }: Props) => {
   const hostName =
     typeof window !== 'undefined' ? window.location.hostname : '';
+  const contentText = content.replace(/\\n/g, '\n');
   return (
     <>
       <Head>
+        <meta property="og:title" key="ogTitle" content={contentText} />
         <meta
           property="og:image"
           key="ogImage"
           content={`${hostName}/ogp/${id}.png`}
+        />
+        <meta
+          property="twitter:title"
+          key="twitterTitle"
+          content={contentText}
+        />
+        <meta
+          property="twitter:text:title"
+          key="twitterTextTitle"
+          content={contentText}
         />
         <meta
           name="twitter:card"
@@ -45,7 +57,7 @@ const OneWise: FC<Props> = ({ id, content }: Props) => {
         </Box>
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
           <TwitterShareButton
-            text={content.replace(/\\n/g, '\n')}
+            text={contentText}
             hashtags={['名言', '格言']}
             url={`https://${hostName}/wise/${id}`}
           />
