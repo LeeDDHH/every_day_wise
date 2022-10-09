@@ -25,21 +25,6 @@ const OneWise: FC<Props> = ({ id, content }: Props) => {
     <>
       <Head>
         <meta
-          name="twitter:card"
-          key="twitterCard"
-          content="summary_large_image"
-        />
-        <meta
-          property="twitter:title"
-          key="twitterTitle"
-          content={contentText}
-        />
-        <meta
-          name="twitter:image"
-          key="twitterImage"
-          content={`https://${hostName}/ogp/${id}.png`}
-        />
-        <meta
           property="og:title"
           key="ogTitle"
           content="毎日名言・格言を1つずつ表示するサイト"
@@ -57,6 +42,17 @@ const OneWise: FC<Props> = ({ id, content }: Props) => {
         <meta
           property="og:image"
           key="ogImage"
+          content={`https://${hostName}/ogp/${id}.png`}
+        />
+        <meta
+          name="twitter:card"
+          key="twitterCard"
+          content="summary_large_image"
+        />
+        <meta name="twitter:title" key="twitterTitle" content={contentText} />
+        <meta
+          name="twitter:image"
+          key="twitterImage"
           content={`https://${hostName}/ogp/${id}.png`}
         />
       </Head>
